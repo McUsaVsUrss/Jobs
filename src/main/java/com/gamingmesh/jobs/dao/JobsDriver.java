@@ -18,11 +18,11 @@
 
 package com.gamingmesh.jobs.dao;
 
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverPropertyInfo;
-import java.sql.SQLException;
+import org.bukkit.Bukkit;
+
+import java.sql.*;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 public class JobsDriver implements Driver {
     private Driver driver;
@@ -58,5 +58,10 @@ public class JobsDriver implements Driver {
     @Override
     public boolean jdbcCompliant() {
         return driver.jdbcCompliant();
+    }
+
+    @Override
+    public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+        return Bukkit.getLogger();
     }
 }
